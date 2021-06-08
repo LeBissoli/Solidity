@@ -205,7 +205,9 @@ contract ContratoRifa{
         return address(this).balance;
     }
     
-   function valoresRifaContrato(uint _idRifa) public view returns(uint){
+   /* O compilador informa que tem um gas extra para executar a funcao abaixo.. funciona legal
+    function valoresRifaContrato(uint _idRifa) public view returns(uint){
         return (Rifas[_idRifa].numeroParticipante.length * Rifas[_idRifa].valorNumero);
     }
+    */
 }
