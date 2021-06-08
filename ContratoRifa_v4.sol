@@ -204,5 +204,8 @@ contract ContratoRifa{
     function valoresContrato() public view returns(uint){
         return address(this).balance;
     }
-   
+    
+   function valoresRifaContrato(uint _idRifa) public view returns(uint){
+        return (Rifas[_idRifa].numeroParticipante.length * Rifas[_idRifa].valorNumero);
+    }
 }
