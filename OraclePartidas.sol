@@ -17,7 +17,7 @@ contract OraclePartidas{
         bool resultadoAtualizado;
     }
     
-    partida[] private Partidas;
+    partida[] public Partidas;
     
     
     address public admin; // Está publico para nao perder o controle do Admin e testar o modifier
