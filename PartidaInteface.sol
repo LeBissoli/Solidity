@@ -11,17 +11,14 @@ import  './OraclePartidas.sol';
 
 contract PartidaInteface {
     
-    struct partida {
+  /* struct partida {
         uint dataRegistro;
         string time1_Casa;
         string time2_Visitante;
         uint timeVencedor;
         bool resultadoAtualizado;
-    }
-    partida[] public Partidas;
-    
-    address public nomeAdmin;
-    
+    }*/
+
     OraclePartidas internal contratoPartidas;
     
     
@@ -29,9 +26,15 @@ contract PartidaInteface {
         contratoPartidas =  OraclePartidas(_enderecoContrato);
         
     }
-   
-   function listarPartidasContrato() public view returns (address){
-      // Partidas = contratoPartidas.listarPartidas();
-      // return nomeAdmin;
+
+    function retornarPartida(uint _idPartida) public view returns (uint _idTimeVencedor, string memory _time1_Casa, string memory _time2_Visitante){
+        uint idTimeVencedor;
+        string memory time1_Casa;
+        string memory time2_Visitante;
+        
+        // RECEBO AS VARIÁVEIS
+        (idTimeVencedor, time1_Casa, time2_Visitante) = contratoPartidas.retornarPartida(_idPartida);
+       
+        return (idTimeVencedor, time1_Casa, time2_Visitante);
     }
 }
