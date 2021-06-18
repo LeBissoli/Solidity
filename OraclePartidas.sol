@@ -26,7 +26,7 @@ contract OraclePartidas{
     event novoResultadoLog(uint _idPartida, uint _timeVencedor);
 
     // MODIF
-    //Estabelecer uma caracteristtica para funcoes
+    //Estabelecer uma caracteristica para funcoes
     modifier somenteAdmin { 
         // Somente quem registrou o contrato possui este perfil. Esta no constructor. ADMIN
         require(msg.sender == admin, "Somente o Administrador do Contrato pode executar estea funcao");
@@ -42,10 +42,15 @@ contract OraclePartidas{
         return Partidas;
     }
     
-    function retornarVencedor(uint _idPartida) public view returns (uint _idTime){
+    function retornarVencedor(uint _idPartida) public view returns (uint _idTimeVencedor){
         require(Partidas[_idPartida].resultadoAtualizado, "AGUARDANDO RESULTADO"); // Exigencia = O jogo deve ter o resultado publicado
-        
+    
         return Partidas[_idPartida].timeVencedor;
+    }
+    
+    function retornarPartida(uint _idPartida) public view returns (uint _idTimeVencedor, string memory _time1_Casa, string memory _time2_Visitante){
+       // return Partidas[_idPartida];
+        return (Partidas[_idPartida].timeVencedor, Partidas[_idPartida].time1_Casa, Partidas[_idPartida].time2_Visitante);
     }
     
     function cadastrarNovaPartida(string memory _time1_Casa, string memory _time2_Visitante) somenteAdmin public returns (bool){
