@@ -13,7 +13,7 @@ contract OraclePartidas{
         uint dataRegistro;
         string time1_Casa;
         string time2_Visitante;
-        uint timeVencedor;
+        uint timeVencedor; // sendo: 0 = sem resultado; 1= time 1; 2 = time 2; 3 = empate.
         bool resultadoAtualizado;
     }
     
@@ -40,6 +40,10 @@ contract OraclePartidas{
     // Funcao de apoio para listar as partidas registradas no Oracle
     function listarPartidas() public view returns (partida[] memory){
         return Partidas;
+    }
+    
+    function listarQuantidadePartidas() public view returns (uint _totalPartidas){
+        return Partidas.length;
     }
     
     function retornarVencedor(uint _idPartida) public view returns (uint _idTimeVencedor){
